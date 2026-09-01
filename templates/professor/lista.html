@@ -1,0 +1,47 @@
+{% include 'dashboard/cabecalho.html' %}
+
+<h1 class="mb-4">Lista Professores</h1>
+
+<div class="row">
+    
+    <table class="table table-bordered table-striped">
+        <tbody class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Matricula</th>
+                <th>Materia</th>
+                <th>Email</th>
+                <td>Ações</td>
+            </tr>
+        </tbody>
+
+
+
+
+            {% for professor in lista_professores %}
+
+                    <tr>
+                        <td>{{ professor[0] }}</td>
+                        <td>{{ professor[1] }}</td>
+                        <td>{{ professor[2] }}</td>
+                        <td>{{ professor[3] }}</td>
+                        <td>{{ professor[4] }}</td>
+                        <td>{{ professor[5] }}</td>
+                        <td>
+                            <a href="/professor/editar/{{ professor[0] }}" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="/professor/excluir/{{ professor[0] }}" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Tem certeza que deseja remover este registro?');">Remover</a>
+                        </td>
+                    </tr>
+
+
+            {% endfor %}
+            
+        
+    </table>
+</div>
+
+
+{% include 'dashboard/rodape.html' %}
