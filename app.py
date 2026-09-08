@@ -38,7 +38,7 @@ def listar_aluno():
         (21, 'Gustavo', 20, 'Imperatriz'),
         (22, 'Sofia', 22, 'São Luís')
     ]
-    return render_template('aluno/lista.html', lista_alunos =lista_aluno)
+    return render_template('aluno/lista.html', listar_alunos =lista_aluno)
 
 
 @app.route('/professor')
@@ -46,7 +46,7 @@ def lista_professor():
     lista_professor = [
         (1, 'Dr. João Silva', '123.456.789-00', 'MAT001', 'Matemática', 'ejefpookyo@exemplo.com')
             ]
-    return render_template('professor/lista.html', lista_professores=lista_professor)
+    return render_template('professor/lista.html', listar_professores=lista_professor)
 
 
 if __name__ == '__main__':
