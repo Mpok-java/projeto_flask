@@ -9,10 +9,7 @@
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>CPF</th>
-                <th>Matricula</th>
-                <th>Materia</th>
-                <th>Email</th>
+                <th>Disciplina</th>
                 <td>Ações</td>
             </tr>
         </tbody>
@@ -26,9 +23,6 @@
                         <td>{{ professor[0] }}</td>
                         <td>{{ professor[1] }}</td>
                         <td>{{ professor[2] }}</td>
-                        <td>{{ professor[3] }}</td>
-                        <td>{{ professor[4] }}</td>
-                        <td>{{ professor[5] }}</td>
                         <td>
                             <a href="/professor/editar/{{ professor[0] }}" class="btn btn-primary btn-sm">Editar</a>
                             <a href="/professor/excluir/{{ professor[0] }}" class="btn btn-danger btn-sm"
