@@ -1,6 +1,6 @@
 {% include 'dashboard/cabecalho.html' %}
 
-<h1 class="mb-4">Listagem de Alunos</h1>
+<h1 class="mb-4">Listagem de Turmas</h1>
 
 <div class="row">
     
@@ -8,10 +8,10 @@
         <tbody class="table-dark">
             <tr>
                 <th>ID</th>
-                <th>Nome</th>
-                <th>Idade</th>
-                <th>Cidade</th>
-                <th>Ações</th>
+                <th>Semestre</th>
+                <th>Curso</th>
+                <th>Professor</th>
+                <td>Ações</td>
             </tr>
         </tbody>
 
@@ -23,11 +23,10 @@
                     <tr>
                         <td>{{ item[0] }}</td>
                         <td>{{ item[1] }}</td>
-                        <td>{{ item[2]}}</td>
-                        <td>{{ item[3]}}</td>
+                        <td>{{ item[2] }}</td>
                         <td>
-                            <a href="/aluno/editar/{{ item[0] }}" class="btn btn-primary btn-sm">Editar</a>
-                            <a href="/aluno/excluir/{{ item[0] }}" class="btn btn-danger btn-sm"
+                            <a href="/turma/editar/{{ item[0] }}" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="/turma/excluir/{{ item[0] }}" class="btn btn-danger btn-sm"
                             onclick="return confirm('Tem certeza que deseja remover este registro?');">Remover</a>
                         </td>
                     </tr>

@@ -1,6 +1,6 @@
 {% include 'dashboard/cabecalho.html' %}
 
-<h1 class="mb-4">Lista Professores</h1>
+<h1 class="mb-4">Listagem de  Professores</h1>
 
 <div class="row">
     
@@ -17,15 +17,15 @@
 
 
 
-            {% for professor in lista %}
+            {% for item in lista %}
 
                     <tr>
-                        <td>{{ professor[0] }}</td>
-                        <td>{{ professor[1] }}</td>
-                        <td>{{ professor[2] }}</td>
+                        <td>{{ item[0] }}</td>
+                        <td>{{ item[1] }}</td>
+                        <td>{{ item[2] }}</td>
                         <td>
-                            <a href="/professor/editar/{{ professor[0] }}" class="btn btn-primary btn-sm">Editar</a>
-                            <a href="/professor/excluir/{{ professor[0] }}" class="btn btn-danger btn-sm"
+                            <a href="/professor/editar/{{ item[0] }}" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="/professor/excluir/{{ item[0] }}" class="btn btn-danger btn-sm"
                             onclick="return confirm('Tem certeza que deseja remover este registro?');">Remover</a>
                         </td>
                     </tr>
