@@ -38,7 +38,7 @@ def lista_professor():
     lista_professor = cursor.fetchall()
     conn.close()
 
-    return render_template('professor/lista.html', listar_professores=lista_professor)
+    return render_template('professor/lista.html', lista=lista_professor)
 
 
 if __name__ == '__main__':
