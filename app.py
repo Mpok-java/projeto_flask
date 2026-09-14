@@ -35,9 +35,9 @@ def lista_professor():
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute('SELECT id, nome, disciplina FROM professor')
-    lista_profesor = cursor.fetchall()
+    lista_professor = cursor.fetchall()
     conn.close()
-    #lista_professor = []
+
     return render_template('professor/lista.html', listar_professores=lista_professor)
 
 
