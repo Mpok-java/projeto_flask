@@ -31,9 +31,13 @@ def listar_aluno():
 
 @app.route('/professor')
 def lista_professor():
-    lista_professor = [
-        (1, 'Dr. João Silva', '123.456.789-00', 'MAT001', 'Matemática', 'ejefpookyo@exemplo.com')
-            ]
+    DB_PATH = "banco_escola.db"
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute('SELECT id, nome, disciplina FROM professor')
+    lista_profesor = cursor.fetchall()
+    conn.close()
+    #lista_professor = []
     return render_template('professor/lista.html', listar_professores=lista_professor)
 
 
