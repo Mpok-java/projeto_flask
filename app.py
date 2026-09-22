@@ -1,5 +1,8 @@
 from flask import Flask, render_template
-import sqlite3
+from dao.aluno_dao import AlunoDAO
+from dao.professor_dao import ProfessorDAO
+from dao.turma_dao import TurmaDAO
+from dao.curso_dao import CursoDAO
 
 app = Flask(__name__)
 
@@ -15,43 +18,29 @@ def sobre_o_sistema():
 
 @app.route('/aluno')
 def listar_aluno():
-
-    DB_PATH = "banco_escola.db"
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-
-    cursor.execute('SELECT id, nome, idade, cidade FROM aluno')
-
-    lista = cursor.fetchall()
-
-    conn.close()
-    
-    return render_template('aluno/lista.html', lista =lista)
+    dao = AlunoDAO()
+    lista = dao.listar()
+    return render_template('aluno/lista.html', lista = lista)
 
 
 @app.route('/professor')
 def lista_professor():
-    DB_PATH = "banco_escola.db"
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    cursor.execute('SELECT id, nome, disciplina FROM professor')
-    lista_professor = cursor.fetchall()
-    conn.close()
-
+    dao = ProfessorDAO()
+    lista_professor = dao.listar()
     return render_template('professor/lista.html', lista=lista_professor)
 
 
 @app.route('/turma')
 def lista_turma():
-    DB_PATH = "banco_escola.db"
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    cursor.execute('SELECT turma.id, semestre, nome_curso, nome FROM turma JOIN curso on curso_id=turma.curso_id JOIN professor on professor_id=turma.professor_id')
-    lista_turma = cursor.fetchall()
-    conn.close()
-
+    dao = TurmaDAO()
+    lista_turma = dao.listar()
     return render_template('turma/lista.html', lista=lista_turma)
 
+@app.route('/disciplina')
+def lista_disciplina():
+    dao = CursoDAO()
+    lista_disciplina = dao.listar()
+    return render_template('disciplina/lista.html', lista = lista_disciplina)
 
 if __name__ == '__main__':
     app.run(debug=True)
