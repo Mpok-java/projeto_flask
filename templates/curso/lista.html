@@ -1,6 +1,6 @@
-{% include 'dashboard/cabecallho.html' %}
+{% include 'dashboard/cabecalho.html' %}
 
-<h1 class ="mb-4">Listagem de Disciplinas</h1>
+<h1 class ="mb-4">Listagem de Cursos</h1>
 
 <div class ="row">
 
@@ -8,7 +8,7 @@
         <tbody class = "table-dark">
             <tr>
                 <th>ID</th>
-                <th>Nome da Disciplina</th>
+                <th>Nome</th>
                 <th>Duração</th>
                 <th>Ações</th>
             </tr>
@@ -22,8 +22,8 @@
                         <td>{{ item[1] }}</td>
                         <td>{{ item[2] }}</td>
                         <td>
-                            <a href="/disciplina/editar/{{ item[0] }}" class="btn btn-primary btn-sm">Editar</a>
-                            <a href="/disciplina/excluir/{{ item[0] }}" class="btn btn-danger btn-sm"
+                            <a href="/curso/editar/{{ item[0] }}" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="/curso/excluir/{{ item[0] }}" class="btn btn-danger btn-sm"
                             onclick="return confirm('Tem certeza que deseja remover este registro?');">Remover</a>
                         </td>
                     </tr>
@@ -31,3 +31,5 @@
             {% endfor %}
     </table>
 </div>
+
+{% include 'dashboard/rodape.html' %}

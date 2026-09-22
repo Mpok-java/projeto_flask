@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from dao.aluno_dao import AlunoDAO
 from dao.professor_dao import ProfessorDAO
 from dao.turma_dao import TurmaDAO
+from dao.curso_dao import CursoDAO
 
 app = Flask(__name__)
 
@@ -35,6 +36,13 @@ def lista_turma():
     lista_turma = dao.listar()
     return render_template('turma/lista.html', lista=lista_turma)
 
+
+@app.route('/curso')
+def lista_curso():
+   dao = CursoDAO()
+   lista_curso =dao.listar()
+   return render_template('curso/lista.html', lista=lista_curso)
+   #return render_template('curso/lista.html')
 
 
 if __name__ == '__main__':
