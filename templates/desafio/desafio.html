@@ -1,0 +1,13 @@
+{% include 'dashboard/cabecalho.html' %}
+
+<h1 class = "mb-4">{{valor_recebido}}</h1>
+
+<form action = "/cadastro" method = "POST">
+    <input type = "text" name = "nome" placeholder = "Digite seu nome"> <br><br>
+    <input type = "text" name = "data_nascimento" placeholder = "Digite seu Aniversário"> <br><br>
+    <input type = "text" name = "cpf" placeholder = "Digite seu CPF"> <br><br>
+    <input type = "text" name = "nome_mae" placeholder = "Digite o nome da sua mãe"> <br><br>
+    <button type = "submit" value = "Enviar">Enviar</button>
+</form>
+
+{% include 'dashboard/rodape.html' %}
