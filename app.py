@@ -75,6 +75,7 @@ def form_professor():
 
 
 @app.route('/professor/salvar/', methods=['POST'])
+@app.route('/professor/salvar/<int:id>', methods=['POST'])
 def salvar_professor(id=None):
     nome = request.form['nome']
     disciplina = request.form['disciplina']
@@ -82,6 +83,24 @@ def salvar_professor(id=None):
     resultado = dao.salvar(id, nome, disciplina)
     if resultado['status'] == "ok":
         flash("Professor salvo com sucesso!", "success")
+    else:
+        flash(resultado["mensagem"], "danger")
+    return redirect('/professor')
+
+
+@app.route('/professor/editar/<int:id>')
+def editar_professor(id):
+    dao = ProfessorDAO()
+    professor = dao.buscar_por_id(id)
+    return render_template('professor/form.html', professor=professor)
+
+
+@app.route('/professor/remover/<int:id>')
+def remover_professor(id):
+    dao = ProfessorDAO()
+    resultado = dao.remover(id)
+    if resultado['status'] == "ok":
+        flash("Professor removido com sucesso!", "success")
     else:
         flash(resultado["mensagem"], "danger")
     return redirect('/professor')
@@ -127,6 +146,7 @@ def form_curso():
 
 
 @app.route('/curso/salvar/', methods=['POST'])
+@app.route('/curso/salvar/<int:id>', methods=['POST'])
 def salvar_curso(id=None):
     nome_curso = request.form['nome']
     duracao = request.form['duracao']
@@ -134,6 +154,24 @@ def salvar_curso(id=None):
     resultado = dao.salvar(id, nome_curso, duracao)
     if resultado['status'] == "ok":
         flash("Curso salvo com sucesso!", "success")
+    else:
+        flash(resultado["mensagem"], "danger")
+    return redirect('/curso')
+
+
+@app.route('/curso/editar/<int:id>')
+def editar_curso(id):
+    dao = CursoDAO()
+    curso = dao.buscar_por_id(id)
+    return render_template('curso/form.html', curso=curso)
+
+
+@app.route('/curso/remover/<int:id>')
+def remover_curso(id):
+    dao = CursoDAO()
+    resultado = dao.remover(id)
+    if resultado['status'] == "ok":
+        flash("Curso removido com sucesso!", "success")
     else:
         flash(resultado["mensagem"], "danger")
     return redirect('/curso')
