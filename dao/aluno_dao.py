@@ -31,7 +31,7 @@ class AlunoDAO:
     def buscar_por_id(self, id):
         conn = get_connection()
         cursor = conn.cursor()
-        cursor.execute('SELECT id, nome, idade, FROM aluno WHERE id = %s', (id,))
+        cursor.execute('SELECT id, nome, idade, cidade FROM aluno WHERE id = %s', (id,))
         registro = cursor.fetchone()
         conn.close()
         return registro

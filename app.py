@@ -55,7 +55,7 @@ def editar_aluno(id):
 def remover_aluno(id):
     dao = AlunoDAO()
     resultado = dao.remover(id)
-    if resultado['status'] == "ok":
+    if resultado["status"] == "ok":
         flash("Aluno removido com sucesso!", "success")
     else:
         flash(resultado["mensagem"], "danger")
