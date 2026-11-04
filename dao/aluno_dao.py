@@ -17,7 +17,7 @@ class AlunoDAO:
         cursor = conn.cursor()
         try:
             if id:
-                cursor.execute('UPDATE aluno SET nome = %s, idade = %s, cidade = 5s WHERE id = %s', (nome, idade, cidade, id))
+                cursor.execute('UPDATE aluno SET nome = %s, idade = %s, cidade = %s WHERE id = %s', (nome, idade, cidade, id))
             else:
                 cursor.execute('INSERT INTO aluno (nome, idade, cidade) VALUES (%s, %s, %s)', (nome, idade, cidade))
             conn.commit()
