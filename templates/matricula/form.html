@@ -1,0 +1,38 @@
+{% include 'dashboard/cabecalho.html' %}
+
+<!-- Formulário de Matrícula -->
+<h1 class="mb-4">Cadastrar Matrícula</h1>
+<div class="row">
+    <div class="col-12">
+      <form action="/matricula/salvar/" method="POST">
+  
+        <!-- Aluno -->
+        <div class="mb-3">
+          <label for="aluno" class="form-label">Aluno</label>
+          <input type="text" class="form-control" id="aluno" name="aluno" value="{{ matricula[1] }}" required>
+        </div>
+  
+        <!-- Curso --> 
+        <div class="mb-3">
+          <label for="curso" class="form-label">Curso</label>
+          <input type="text" class="form-control" id="curso" name="curso" value="{{ matricula[2] }}" required>
+        </div>
+
+        <!-- Data de Matrícula --> 
+        <div class="mb-3">
+          <label for="data_matricula" class="form-label">Data de Matrícula</label>
+          <input type="date" class="form-control" id="data_matricula" name="data_matricula" value="{{ matricula[3] }}" required>
+        </div>
+  
+        <!-- Botões -->
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-primary">Salvar</button>
+          <a href="/matricula" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+    </div>
+  </div>
+  
+  {% include 'dashboard/rodape.html' %}
+
+{% include 'dashboard/rodape.html' %}

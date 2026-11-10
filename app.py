@@ -3,6 +3,7 @@ from dao.aluno_dao import AlunoDAO
 from dao.professor_dao import ProfessorDAO
 from dao.turma_dao import TurmaDAO
 from dao.curso_dao import CursoDAO
+from dao.matricula_dao import MatriculaDAO
 
 app = Flask(__name__)
 app.secret_key = "KAMEHAMEHAMEHA_GENKI_DAMA"
@@ -204,6 +205,61 @@ def remover_curso(id):
     else:
         flash(resultado["mensagem"], "danger")
     return redirect('/curso')
+
+
+@app.route('/matricula')
+def lista_matricula():
+    dao = MatriculaDAO()
+    lista_matricula = dao.listar()
+    return render_template('matricula/lista.html', lista=lista_matricula)
+
+
+@app.route('/matricula/form')
+def form_matricula():
+    lista_aluno = AlunoDAO().listar()
+    lista_curso = CursoDAO().listar()
+    return render_template('matricula/form.html', 
+                           matricula = None,
+                           lista_aluno = lista_aluno,
+                           lista_curso = lista_curso)
+
+
+@app.route('/matricula/salvar/', methods=['POST'])
+@app.route('/matricula/salvar/<int:id>', methods=['POST'])
+def salvar_matricula(id=None):
+    aluno_id = request.form['aluno_id']
+    curso_id = request.form['curso_id']
+    data_matricula = request.form['data_matricula']
+    dao = MatriculaDAO()
+    resultado = dao.salvar(id, aluno_id, curso_id, data_matricula)
+    if resultado['status'] == "ok":
+        flash("Matrícula salva com sucesso!", "success")
+    else:
+        flash(resultado["mensagem"], "danger")
+    return redirect('/matricula')
+
+
+@app.route('/matricula/editar/<int:id>')
+def editar_matricula(id):
+    dao = MatriculaDAO()
+    matricula = dao.buscar_por_id(id)
+    lista_aluno = AlunoDAO().listar()
+    lista_curso = CursoDAO().listar()
+    return render_template('matricula/form.html', 
+                           matricula=matricula,
+                           lista_aluno=lista_aluno,
+                           lista_curso=lista_curso)
+
+
+@app.route('/matricula/remover/<int:id>')
+def remover_matricula(id):
+    dao = MatriculaDAO()
+    resultado = dao.remover(id)
+    if resultado['status'] == "ok":
+        flash("Matrícula removida com sucesso!", "success")
+    else:
+        flash(resultado["mensagem"], "danger")
+    return redirect('/matricula')
 
 
 @app.route('/saudacao1/<nome>')

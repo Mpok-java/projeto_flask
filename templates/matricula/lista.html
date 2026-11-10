@@ -1,0 +1,30 @@
+{% include 'dashboard/cabecalho.html' %}
+
+<h1>Lista de Matrículas</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Aluno</th>
+            <th>Curso</th>
+            <th>Data de Matrícula</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for matricula in matriculas %}
+        <tr>
+            <td>{{ matricula[0] }}</td>
+            <td>{{ matricula[1] }}</td>
+            <td>{{ matricula[2] }}</td>
+            <td>{{ matricula[3] }}</td>
+            <td>
+                <a href="/matricula/editar/{{ matricula[0] }}">Editar</a> |
+                <a href="/matricula/remover/{{ matricula[0] }}">Remover</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% include 'dashboard/rodape.html' %}
