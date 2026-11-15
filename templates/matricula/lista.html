@@ -1,30 +1,42 @@
 {% include 'dashboard/cabecalho.html' %}
 
 <h1>Lista de Matrículas</h1>
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Aluno</th>
-            <th>Curso</th>
-            <th>Semestre</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for matricula in matriculas %}
-        <tr>
-            <td>{{ matricula[0] }}</td>
-            <td>{{ matricula[1] }}</td>
-            <td>{{ matricula[2] }}</td>
-            <td>{{ matricula[3] }}</td>
-            <td>
-                <a href="/matricula/editar/{{ matricula[0] }}">Editar</a> |
-                <a href="/matricula/remover/{{ matricula[0] }}">Remover</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="mt-3 mb-4">
+    <a href="/turma/form" class="btn btn-primary mb-3">Novo</a>
+</div>
+
+<div class="row">
+    
+    <table class="table table-bordered table-striped">
+        <tbody class="table-dark">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Aluno</th>
+                    <th>Curso</th>
+                    <th>Semestre</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+        </tbody>
+
+
+            {% for matricula in matriculas %}
+            <tr>
+                <td>{{ matricula[0] }}</td>
+                <td>{{ matricula[1] }}</td>
+                <td>{{ matricula[2] }}</td>
+                <td>{{ matricula[3] }}</td>
+                <td>
+                    <a href="/matricula/editar/{{ matricula[0] }}">Editar</a> |
+                    <a href="/matricula/remover/{{ matricula[0] }}">Remover</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+
+    </table>
+
+</div>
 
 {% include 'dashboard/rodape.html' %}
