@@ -18,11 +18,16 @@
 
   
          <!-- Curso -->
-      <div class="mb-3">
+      <div class="mb-4">
         <label for="curso_id" class="form-label">Curso {{turma[2]}}</label>
         <select name="curso_id" id="curso_id" class="form-select" required>
+          <option value="" disabled selected>Selecione um curso</option>
           {% for curso in lista_cursos %}
-            <option value="{{ curso[0] }}" {% if curso[0] == turma[2] %} selected {% endif %}>{{ curso[1] }}</option>
+            <option value="{{ curso[0] }}" {% if turma and curso[0] == turma[2] %} selected {% endif %}>{{ curso[1] }}</option>
+            <option value="{{ curso[0] }}" {% if turma and curso[0] == turma[2] %} selected {% endif %}>Informática</option>
+            <option value="{{ curso[0] }}" {% if turma and curso[0] == turma[2] %} selected {% endif %}>Administração</option>
+            <option value="{{ curso[0] }}" {% if turma and curso[0] == turma[2] %} selected {% endif %}>Enfermagem</option>
+            <option value="{{ curso[0] }}" {% if turma and curso[0] == turma[2] %} selected {% endif %}>Eletrotécina</option>
           {% endfor %}
         </select>
       </div>
@@ -32,8 +37,16 @@
       <div class="mb-3">
         <label for="professor_id" class="form-label">Professor</label>
         <select name="professor_id" id="professor_id" class="form-select" required>
+          <option value="" disabled selected>Selecione um professor</option>
+          {% if turma %}
+            <option value="{{ turma[3] }}" selected>{{ turma[3] }}</option>
+          {% endif %}
           {% for professor in lista_professores %}
-            <option value="{{ professor[0] }}" {% if turma and professor[0] == turma[3] %}selected{% endif %}>{{ professor[1] }}</option>
+            <option value="{{ professor[0] }}" {% if turma and professor[0] == turma[3] %}selected{% endif %}>André Ferreira</option>
+            <option value="{{ professor[0] }}" {% if turma and professor[0] == turma[3] %}selected{% endif %}>Luciana Teixeira</option>
+            <option value="{{ professor[0] }}" {% if turma and professor[0] == turma[3] %}selected{% endif %}>Pedro Oliveira</option>
+            <option value="{{ professor[0] }}" {% if turma and professor[0] == turma[3] %}selected{% endif %}>Fernanda Lima</option>
+            <option value="{{ professor[0] }}" {% if turma and professor[0] == turma[3] %}selected{% endif %}>Jefferson de Sousa Silva</option> 
           {% endfor %}
         </select>
       </div>

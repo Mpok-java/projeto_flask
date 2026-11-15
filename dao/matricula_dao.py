@@ -2,7 +2,11 @@ from dao.db_config import get_connection
 
 class MatriculaDAO:
 
-    sqlSelect = 'SELECT id, aluno_id, curso_id, data_matricula FROM matricula'
+    sqlSelect = '''
+            SELECT matricula.id, aluno.nome, curso.nome_curso, turma.semestre FROM matricula
+            JOIN aluno on aluno_id = matricula.aluno_id
+            JOIN curso on curso_id = matricula.curso_id
+            JOIN turma on turma_id = matricula.turma_id'''
 
     def listar(self):
         conn = get_connection()
@@ -12,14 +16,18 @@ class MatriculaDAO:
         conn.close()
         return lista
 
-    def salvar(self, id, aluno_id, curso_id, data_matricula):
+    def salvar(self, id, aluno_id, curso_id, turma_id):
         conn = get_connection()
         cursor = conn.cursor()
         try:
             if id:
-                cursor.execute('UPDATE matricula SET aluno_id = %s, curso_id = %s, data_matricula = %s WHERE id = %s', (aluno_id, curso_id, data_matricula, id))
+                cursor.execute('''
+                UPDATE matricula SET aluno_id = %s, curso_id = %s, turma_id = %s WHERE id = %s
+                ''', (aluno_id, curso_id, turma_id, id))
             else:
-                cursor.execute('INSERT INTO matricula (aluno_id, curso_id, data_matricula) VALUES (%s, %s, %s)', (aluno_id, curso_id, data_matricula))
+                cursor.execute('''
+                INSERT INTO matricula (aluno_id, curso_id, turma_id) VALUES (%s, %s, %s)
+                ''', (aluno_id, curso_id, turma_id))
             conn.commit()
             return {"status": "ok"}
         
@@ -31,7 +39,7 @@ class MatriculaDAO:
     def buscar_por_id(self, id):
         conn = get_connection()
         cursor = conn.cursor()
-        cursor.execute('SELECT id, aluno_id, curso_id, data_matricula FROM matricula WHERE id = %s', (id,))
+        cursor.execute('SELECT id, aluno_id, curso_id FROM matricula WHERE id = %s', (id,))
         registro = cursor.fetchone()
         conn.close()
         return registro
