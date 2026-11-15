@@ -23,11 +23,15 @@
         <select name="curso_id" id="curso_id" class="form-select" required>
           <option value="" disabled selected>Selecione um curso</option>
           {% for curso in lista_cursos %}
-            <option value="{{ curso[0] }}" {% if turma and curso[0] == turma[2] %} selected {% endif %}>{{ curso[1] }}</option>
-            <option value="{{ curso[0] }}" {% if turma and curso[0] == turma[2] %} selected {% endif %}>Informática</option>
-            <option value="{{ curso[0] }}" {% if turma and curso[0] == turma[2] %} selected {% endif %}>Administração</option>
-            <option value="{{ curso[0] }}" {% if turma and curso[0] == turma[2] %} selected {% endif %}>Enfermagem</option>
-            <option value="{{ curso[0] }}" {% if turma and curso[0] == turma[2] %} selected {% endif %}>Eletrotécina</option>
+
+            <option value=" 1 ">Informática</option>
+
+            <option value=" 2 ">Administração</option>
+
+            <option value=" 3 ">Enfermagem</option>
+
+            <option value=" 4 ">Eletrotécina</option>
+
           {% endfor %}
         </select>
       </div>
@@ -43,21 +47,15 @@
           {% endif %}
           {% for professor in lista_professores %}
             <option value="{{ professor[0] }}" {% if turma and professor[0] == turma[3] %}selected{% endif %}>André Ferreira</option>
+
             <option value="{{ professor[0] }}" {% if turma and professor[0] == turma[3] %}selected{% endif %}>Luciana Teixeira</option>
+
             <option value="{{ professor[0] }}" {% if turma and professor[0] == turma[3] %}selected{% endif %}>Pedro Oliveira</option>
+
             <option value="{{ professor[0] }}" {% if turma and professor[0] == turma[3] %}selected{% endif %}>Fernanda Lima</option>
+            
             <option value="{{ professor[0] }}" {% if turma and professor[0] == turma[3] %}selected{% endif %}>Jefferson de Sousa Silva</option> 
-          {% endfor %}
-        </select>
-      </div>
 
-
-      <!-- Disciplina -->
-      <div class="mb-3">
-        <label for="disciplina" class="form-label">Disciplina</label>
-        <select name="disciplina_id" id="disciplina_id" class="form-select" required>
-          {% for disciplina in lista_disciplinas %}
-            <option value="{{ disciplina[0] }}" {% if turma and disciplina[0] == turma[4] %}selected{% endif %}>{{ disciplina[1] }}</option>
           {% endfor %}
         </select>
       </div>
@@ -68,6 +66,7 @@
         <button type="submit" class="btn btn-primary">Salvar</button>
         <a href="/turma" class="btn btn-secondary">Cancelar</a>
       </div>
+
     </form>
   </div>
 </div>
