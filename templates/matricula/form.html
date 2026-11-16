@@ -9,12 +9,18 @@
         <!-- Aluno -->
         <div class="mb-3">
           <label for="aluno_id" class="form-label">Aluno</label>
-          <input type="text" class="form-control" id="aluno_id" name="aluno_id" value="" required>
+          <select name="aluno_id" id="aluno_id" class="form-control" required>
+
+            {% for aluno in lista_aluno %}
+              <option value=" {{ aluno.0 }} " {{ "selected" if matricula.1 == aluno.0 else "" }}>{{ aluno.1 }}</option>
+            {% endfor %}
+
+          </select>
         </div>
   
         <!-- Curso --> 
         <div class="mb-3">
-          <label for="curso" class="form-label">Curso</label>
+          <label for="curso_id" class="form-label">Curso</label>
           <select name="curso_id" id="curso_id" class="form-control" required>
 
             {% for curso in lista_curso %}
@@ -27,7 +33,13 @@
         <!-- Semestre --> 
         <div class="mb-3">
           <label for="semestre" class="form-label">Semestre</label>
-          <input type="text" class="form-control" id="semestre" name="semestre" value="" required>
+          <select name="semestre" id="semestre" class="form-control" required>
+
+            {% for turma in lista_turma %}
+              <option value=" {{ turma.0 }} " {{ "selected" if matricula.3 == turma.0 else "" }}>{{ turma.1 }}</option>
+            {% endfor %}
+
+          </select>
         </div>
   
         <!-- Botões -->
