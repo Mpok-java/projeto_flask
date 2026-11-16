@@ -8,7 +8,7 @@ class TurmaDAO:
         cursor.execute('''   
             SELECT turma.id, turma.semestre,curso.nome_curso, professor.nome, professor.disciplina FROM turma
             JOIN curso on curso_id=turma.curso_id
-            JOIN professor on professor_id=turma.professor_id
+            JOIN professor on professor_id=turma.professor_id ORDER BY turma.id desc
             ''')
         lista = cursor.fetchall()
         conn.close()

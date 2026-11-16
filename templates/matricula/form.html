@@ -15,7 +15,13 @@
         <!-- Curso --> 
         <div class="mb-3">
           <label for="curso" class="form-label">Curso</label>
-          <input type="text" class="form-control" id="curso" name="curso" value="" required>
+          <select name="curso_id" id="curso_id" class="form-control" required>
+
+            {% for curso in lista_curso %}
+              <option value=" {{ curso.0 }} " {{ "selected" if matricula.2 == curso.0 else "" }}>{{ curso.1 }}</option>
+            {% endfor %}
+            
+          </select>
         </div>
 
         <!-- Semestre --> 
